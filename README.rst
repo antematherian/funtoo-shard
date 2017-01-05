@@ -1,3 +1,8 @@
+Shard Overlay
+================================
+
+This is a simple personal overlay for the Funtoo Linux distribution (http://www.funtoo.org).
+
 =================================
 How to Contribute to this Overlay
 =================================
