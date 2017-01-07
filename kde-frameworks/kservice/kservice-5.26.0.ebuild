@@ -29,9 +29,18 @@ DEPEND="${RDEPEND}
 
 # requires running kde environment
 RESTRICT+=" test"
+
+#patch file to fix problems with flex-2.6.2 version
+
+PATCHES=( "${FILESDIR}/${PN}-5.26.0-lex.patch" )
+
 src_prepare() {
-	unpack ${A}
-	cd "${S}"
+	if declare -p PATCHES | grep -q "^declare -a "; then
+			[[ -n ${PATCHES[@]} ]] && eapply "${PATCHES[@]}"
+	else
+			[[ -n ${PATCHES} ]] && eapply ${PATCHES}
+	fi
+	eapply_user
 }
 
 src_configure() {
