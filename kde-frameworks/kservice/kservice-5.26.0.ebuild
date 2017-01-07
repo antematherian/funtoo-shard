@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit kde5
+inherit kde5 eutils
 
 DESCRIPTION="Advanced plugin and service introspection"
 LICENSE="LGPL-2 LGPL-2.1+"
@@ -29,6 +29,10 @@ DEPEND="${RDEPEND}
 
 # requires running kde environment
 RESTRICT+=" test"
+src_prepare() {
+	unpack ${A}
+	cd "${S}"
+}
 
 src_configure() {
 	local mycmakeargs=(
