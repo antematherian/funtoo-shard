@@ -1,13 +1,11 @@
---- a/src/services/lex.l	2017-01-07 21:12:25.328000000 +0000
-+++ b/src/services/lex.l	2017-01-07 21:23:22.092000000 +0000
-@@ -157,12 +157,14 @@
+--- a/src/services/lex.l	2017-01-07 23:29:10.891468723 +0100
++++ b/src/services/lex.l	2017-01-07 23:31:43.399462779 +0100
+@@ -157,12 +157,12 @@
  
  void KTraderParse_initFlex( const char *_code, yyscan_t _scanner )
  {
 -  yy_switch_to_buffer( yy_scan_string( _code, _scanner ), _scanner );
 +  kiotrader_switch_to_buffer(kiotrader_scan_string(_code,_scanner), _scanner );
-+ }
-+
  }
  
  int yywrap( yyscan_t _scanner )
