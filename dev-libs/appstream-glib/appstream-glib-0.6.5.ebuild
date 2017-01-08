@@ -5,7 +5,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit bash-completion-r1 gnome2
+inherit  bash-completion-r1 gnome2 eutils
 
 DESCRIPTION="Provides GObjects and helper methods to read and write AppStream metadata"
 HOMEPAGE="https://people.freedesktop.org/~hughsient/appstream-glib/"
@@ -44,6 +44,20 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	!<dev-util/appdata-tools-0.1.8-r1
 "
+
+#patch file to fix problems with flex-2.6.2 version
+
+PATCHES=( "${FILESDIR}/${PN}-0.6.3-as-tag.patch" )
+
+src_prepare() {
+	if declare -p PATCHES | grep -q "^declare -a "; then
+		[[ -n ${PATCHES[@]} ]] && eapply "${PATCHES[@]}"
+	else
+		[[ -n ${PATCHES} ]] && eapply ${PATCHES}
+	fi
+	eapply_user
+}
+
 
 src_configure() {
 	gnome2_src_configure \
