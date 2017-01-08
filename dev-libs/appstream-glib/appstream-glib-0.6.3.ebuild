@@ -5,7 +5,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit  bash-completion-r1 gnome2 eutils
+inherit bash-completion-r1 gnome2 eutils
 
 DESCRIPTION="Provides GObjects and helper methods to read and write AppStream metadata"
 HOMEPAGE="https://people.freedesktop.org/~hughsient/appstream-glib/"
@@ -44,7 +44,6 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	!<dev-util/appdata-tools-0.1.8-r1
 "
-
 #patch file to fix duplicate function definition in source file
 
 PATCHES=( "${FILESDIR}/${PN}-0.6.3-as-tag.patch" )
@@ -57,7 +56,6 @@ src_prepare() {
 	fi
 	eapply_user
 }
-
 
 src_configure() {
 	gnome2_src_configure \
