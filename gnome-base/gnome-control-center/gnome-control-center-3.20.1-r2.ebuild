@@ -87,7 +87,7 @@ RDEPEND="${COMMON_DEPEND}
 	colord? ( >=gnome-extra/gnome-color-manager-3 )
 	cups? (
 		app-admin/system-config-printer
-		net-print/cups-pk-helper )
+		net-print/cups-pk-helper 
 	input_devices_wacom? ( gnome-base/gnome-settings-daemon[input_devices_wacom] )
 	i18n? ( >=gnome-base/libgnomekbd-3 )
 	wayland? ( libinput? ( dev-libs/libinput ) )
