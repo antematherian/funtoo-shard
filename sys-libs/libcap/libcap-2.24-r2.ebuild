@@ -27,7 +27,21 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.20-ignore-RAISE_SETFCAP-install-failures.patch
 	epatch "${FILESDIR}"/${PN}-2.21-include.patch
 	epatch "${FILESDIR}"/${PN}-2.24-setcap-errno.patch #551672
-	epatch "${FILESDIR}"/${PN}-2.24-gperf-3.1.patch #604802 and FL-3473
+
+	#the patch that fixes version gperf 3.1.0 (excuse me, gperf 3.1)
+	#breaks the build on version gperf 3.0.4 , so some hacking needs to be done
+	#if the version is higher or equal to 3.1.0, apply the patch.
+	#note to future maintainer: Test >gperf 3.1.1 and see if the patch still works. 
+
+	if [ "$(gperf --version | grep gperf | sed s'/ /\n/'g | grep 3 | sed s'/\.//'g)" -ht 309 ]
+	then
+		epatch "${FILESDIR}"/${PN}-2.24-gperf-3.1.patch #604802 and FL-3473
+	fi
+	#and for version 3.1
+	if [ "$(gperf --version | grep gperf | sed s'/ /\n/'g | grep 3 | sed s'/\.//'g)" -eq 31 ]
+	then
+		epatch "${FILESDIR}"/${PN}-2.24-gperf-3.1.patch #604802 and FL-3473
+	fi
 	multilib_copy_sources
 }
 
