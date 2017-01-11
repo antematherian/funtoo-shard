@@ -27,7 +27,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.20-ignore-RAISE_SETFCAP-install-failures.patch
 	epatch "${FILESDIR}"/${PN}-2.21-include.patch
 	epatch "${FILESDIR}"/${PN}-2.24-setcap-errno.patch #551672
-
+	epatch "${FILESDIR}"/${PN}-2.24-gperf-3.1.patch #604802 and FL-3473
 	multilib_copy_sources
 }
 
